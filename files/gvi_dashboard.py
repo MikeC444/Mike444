@@ -15,7 +15,7 @@ import os
 
 # Page configuration
 st.set_page_config(
-    page_title="GVI Decile Tracker",
+    page_title="Galalio Decile Tracker",
     page_icon="📊",
     layout="wide"
 )
@@ -28,7 +28,7 @@ def get_tracker():
 tracker = get_tracker()
 
 # Sidebar navigation
-st.sidebar.title("📊 GVI Tracker")
+st.sidebar.title("📊 Galalio Tracker")
 page = st.sidebar.radio(
     "Navigation",
     ["📈 Dashboard", "📤 Upload Data", "📁 Upload History", "🔍 Stock Lookup", "⚙️ Data Management"]
