@@ -1,0 +1,228 @@
+════════════════════════════════════════════════════════════
+  GVI DECILE TRACKER - INSTALLATION & SETUP GUIDE
+════════════════════════════════════════════════════════════
+
+STEP-BY-STEP INSTALLATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. DOWNLOAD ALL FILES
+   Download all 8 files to a folder on your computer:
+   
+   • gvi_tracker.py
+   • gvi_dashboard.py
+   • gvi_cli.py
+   • requirements.txt
+   • gvi_data.db
+   • README.md
+   • USER_GUIDE.md
+   • quick_start.sh
+
+2. OPEN TERMINAL/COMMAND PROMPT
+   
+   Windows:
+     Press Win+R, type "cmd", press Enter
+     
+   Mac:
+     Press Cmd+Space, type "terminal", press Enter
+     
+   Linux:
+     Press Ctrl+Alt+T
+
+3. NAVIGATE TO YOUR FOLDER
+   
+   cd path/to/your/folder
+   
+   Example:
+     Windows: cd C:\Users\YourName\GVI_Tracker
+     Mac/Linux: cd ~/Documents/GVI_Tracker
+
+4. INSTALL REQUIRED PACKAGES
+   
+   pip install -r requirements.txt
+   
+   This installs:
+   • pandas (data manipulation)
+   • numpy (numerical operations)
+   • openpyxl (Excel file handling)
+   • streamlit (web dashboard)
+   • plotly (interactive charts)
+
+5. LAUNCH THE DASHBOARD
+   
+   streamlit run gvi_dashboard.py
+   
+   Your web browser will open automatically to:
+   http://localhost:8501
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+VERIFY INSTALLATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Test the command-line interface:
+
+python gvi_cli.py dates
+
+You should see:
+  Available dates (2 total):
+    2025-03-11
+    2024-07-10
+
+If you see this, installation is successful! ✅
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+TROUBLESHOOTING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PROBLEM: "pip: command not found"
+SOLUTION:
+  Try: pip3 install -r requirements.txt
+  Or install Python from python.org
+
+PROBLEM: "Python not found"
+SOLUTION:
+  Install Python 3.8+ from python.org
+  Make sure to check "Add to PATH" during installation
+
+PROBLEM: "streamlit: command not found"
+SOLUTION:
+  pip install streamlit --upgrade
+  Then try: python -m streamlit run gvi_dashboard.py
+
+PROBLEM: "No module named pandas"
+SOLUTION:
+  pip install pandas openpyxl numpy plotly streamlit
+
+PROBLEM: Dashboard shows "No data"
+SOLUTION:
+  Make sure gvi_data.db is in the same folder
+  Or re-upload your Excel files
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+FIRST-TIME USAGE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Your database comes pre-loaded with 2 files:
+  • July 10, 2024 (369 stocks)
+  • March 11, 2025 (373 stocks)
+
+To upload a new file:
+
+1. Click "Browse files" in the sidebar
+2. Select your GVI Excel file
+3. Choose the date for the data
+4. Click "Upload File"
+
+The dashboard will automatically update!
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EXCEL FILE FORMAT REQUIREMENTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Your Excel files must have:
+  ✓ Header row at row 4 (same as FactSet exports)
+  ✓ Column "Company Symbol" with tickers
+  ✓ Column "Company Name" with full names
+  ✓ Column "Score (Decile)" with decile rankings
+  ✓ Column "FactSet Econ Sector" with sectors
+
+The system automatically handles FactSet Universal Screen
+export format - no manual formatting needed!
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+WEEKLY WORKFLOW
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Monday Morning Routine:
+
+1. Export latest GVI data from FactSet
+   ↓
+2. Launch dashboard: streamlit run gvi_dashboard.py
+   ↓
+3. Upload file via sidebar
+   ↓
+4. Review "Significant Movers" tab
+   ↓
+5. Investigate stocks in detail
+   ↓
+6. Download CSV for records
+
+Takes < 5 minutes each week!
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+COMMAND-LINE SHORTCUTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Quick upload without opening dashboard:
+
+python gvi_cli.py upload --file data.xlsx --date 2025-04-01
+
+Quick analysis:
+
+python gvi_cli.py analyze --start 2024-07-10 --end 2025-03-11
+
+Check a stock:
+
+python gvi_cli.py ticker --symbol TSLA
+
+Export to Excel:
+
+python gvi_cli.py export --output weekly_report.xlsx
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+BACKUP YOUR DATA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Your complete database is in one file: gvi_data.db
+
+To backup, simply copy this file to:
+  • External drive
+  • Cloud storage (Dropbox, Google Drive, etc.)
+  • Network location
+
+To restore, copy the file back to your folder.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+GETTING HELP
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Check USER_GUIDE.md for detailed usage instructions
+2. Check README.md for technical documentation
+3. Review error messages - they usually explain the issue
+4. Try with the sample files first to verify setup
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SYSTEM TESTED ON
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✓ Windows 10/11
+✓ macOS (Intel & Apple Silicon)
+✓ Linux (Ubuntu, Debian, Fedora)
+
+Python versions:
+✓ Python 3.8
+✓ Python 3.9
+✓ Python 3.10
+✓ Python 3.11
+✓ Python 3.12
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+YOU'RE READY!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Launch your dashboard now:
+
+streamlit run gvi_dashboard.py
+
+Then open your browser to: http://localhost:8501
+
+Happy tracking! 📊

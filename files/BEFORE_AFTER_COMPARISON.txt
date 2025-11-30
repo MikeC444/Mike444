@@ -1,0 +1,208 @@
+═══════════════════════════════════════════════════════════════════════
+  BEFORE & AFTER: SYSTEM CHANGES COMPARISON
+═══════════════════════════════════════════════════════════════════════
+
+┌─────────────────────────────────────────────────────────────────────┐
+│ 1. BRANDING                                                         │
+└─────────────────────────────────────────────────────────────────────┘
+
+BEFORE:                          AFTER:
+"GVI Stock Decile Tracker"   →  "Galileo Stock Decile Tracker"
+"Upload GVI Excel file"       →  "Upload Galileo Excel file"
+"GVI Dashboard"               →  "Galileo Dashboard"
+
+┌─────────────────────────────────────────────────────────────────────┐
+│ 2. DECILE RANKING SYSTEM                                            │
+└─────────────────────────────────────────────────────────────────────┘
+
+BEFORE (Original):               AFTER (Reversed):
+┌──────────────────┐            ┌──────────────────┐
+│ Decile 1  = BEST │            │ Decile 10 = BEST │
+│ Decile 2         │            │ Decile 9         │
+│ Decile 3         │            │ Decile 8         │
+│ Decile 4         │            │ Decile 7         │
+│ Decile 5         │            │ Decile 6         │
+│ Decile 6         │            │ Decile 5         │
+│ Decile 7         │            │ Decile 4         │
+│ Decile 8         │            │ Decile 3         │
+│ Decile 9         │            │ Decile 2         │
+│ Decile 10 = WORST│            │ Decile 1  = WORST│
+└──────────────────┘            └──────────────────┘
+
+Top 3 Deciles:                   Top 3 Deciles:
+  1, 2, 3                    →     8, 9, 10
+
+Bottom 3 Deciles:                Bottom 3 Deciles:
+  8, 9, 10                   →     1, 2, 3
+
+Movement Interpretation:         Movement Interpretation:
+  Negative = Improving       →     Positive = Improving
+  Positive = Declining       →     Negative = Declining
+
+┌─────────────────────────────────────────────────────────────────────┐
+│ 3. TIME PERIOD OPTIONS                                              │
+└─────────────────────────────────────────────────────────────────────┘
+
+BEFORE:                          AFTER:
+• 6 Months                    →  • 12 Months ✨ NEW
+• 3 Months                    →  • 6 Months
+• Custom                      →  • 3 Months
+                              →  • Custom
+
+┌─────────────────────────────────────────────────────────────────────┐
+│ 4. REGIONAL FILTERING                                               │
+└─────────────────────────────────────────────────────────────────────┘
+
+BEFORE:                          AFTER:
+(No regional support)         →  • US
+                              →  • Europe (excl UK) ✨ NEW
+                              →  • UK ✨ NEW
+                              →  • APAC (excl. Japan) ✨ NEW
+                              →  • Japan ✨ NEW
+                              →  • China ✨ NEW
+                              →  • Global ✨ NEW
+                              →  • All Regions (filter)
+
+┌─────────────────────────────────────────────────────────────────────┐
+│ 5. EXAMPLE STOCK MOVEMENTS - DATA COMPARISON                        │
+└─────────────────────────────────────────────────────────────────────┘
+
+BEN (Franklin Resources) - July 2024 to March 2025:
+
+BEFORE:                          AFTER:
+Start: Decile 10 (worst)      →  Start: Decile 1 (worst)
+End: Decile 2 (better)        →  End: Decile 9 (better)
+Change: -8 (improved)         →  Change: +8 (improved)
+Interpretation: Good move     →  Interpretation: Good move
+                                 NOW MORE INTUITIVE! ✓
+
+MSI (Motorola Solutions) - July 2024 to March 2025:
+
+BEFORE:                          AFTER:
+Start: Decile 1 (best)        →  Start: Decile 10 (best)
+End: Decile 9 (worse)         →  End: Decile 2 (worse)
+Change: +8 (declined)         →  Change: -8 (declined)
+Interpretation: Bad move      →  Interpretation: Bad move
+                                 NOW MORE INTUITIVE! ✓
+
+┌─────────────────────────────────────────────────────────────────────┐
+│ 6. DASHBOARD INTERFACE CHANGES                                      │
+└─────────────────────────────────────────────────────────────────────┘
+
+BEFORE:                          AFTER:
+┌─────────────────────────┐    ┌─────────────────────────┐
+│ GVI Decile Tracker      │    │ Galileo Decile Tracker  │
+├─────────────────────────┤    ├─────────────────────────┤
+│ Period:                 │    │ Region: [Dropdown] ✨NEW│
+│   • 6 Months           │    │                         │
+│   • 3 Months           │    │ Period:                 │
+│   • Custom             │    │   • 12 Months ✨NEW     │
+│                         │    │   • 6 Months           │
+│ Threshold:              │    │   • 3 Months           │
+│   • Top/Bottom 3       │    │   • Custom             │
+│   • Moving 3+          │    │                         │
+│   • Moving 5+          │    │ Threshold:              │
+└─────────────────────────┘    │   • Top/Bottom 3       │
+                               │   • Moving 3+          │
+                               │   • Moving 5+          │
+                               └─────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────┐
+│ 7. COMMAND LINE INTERFACE CHANGES                                   │
+└─────────────────────────────────────────────────────────────────────┘
+
+UPLOAD COMMAND:
+
+BEFORE:
+python gvi_cli.py upload --file data.xlsx --date 2025-04-01
+
+AFTER:
+python gvi_cli.py upload --file data.xlsx --date 2025-04-01 --region UK
+                                                              └─────┬─────┘
+                                                              NEW PARAMETER
+
+ANALYZE COMMAND:
+
+BEFORE:
+python gvi_cli.py analyze --start 2024-01-01 --end 2025-01-01
+
+AFTER:
+python gvi_cli.py analyze --start 2024-01-01 --end 2025-01-01 --region Japan
+                                                               └──────┬──────┘
+                                                               NEW PARAMETER
+
+┌─────────────────────────────────────────────────────────────────────┐
+│ 8. DATABASE SCHEMA CHANGES                                          │
+└─────────────────────────────────────────────────────────────────────┘
+
+BEFORE:                          AFTER:
+stock_scores:                    stock_scores:
+  • date                      →    • date
+  • ticker                    →    • ticker
+  • company_name              →    • company_name
+  • sector                    →    • sector
+  (no region field)           →    • region ✨ NEW
+  • score                     →    • score
+  • decile (1=best)           →    • decile (10=best) ✨ REVERSED
+
+┌─────────────────────────────────────────────────────────────────────┐
+│ 9. ANALYSIS OUTPUT CHANGES                                          │
+└─────────────────────────────────────────────────────────────────────┘
+
+BEFORE:
+"Stocks entering TOP 3 deciles: 55"
+(Deciles 1, 2, 3)
+
+AFTER:
+"Stocks entering TOP 3 deciles (8, 9, 10): 55"
+Note: Decile 10 = Best Quality | Decile 1 = Worst Quality
+
+BEFORE:
+"Stocks entering BOTTOM 3 deciles: 43"
+(Deciles 8, 9, 10)
+
+AFTER:
+"Stocks entering BOTTOM 3 deciles (1, 2, 3): 43"
+Note: Decile 10 = Best Quality | Decile 1 = Worst Quality
+
+┌─────────────────────────────────────────────────────────────────────┐
+│ 10. VISUAL CHART CHANGES                                            │
+└─────────────────────────────────────────────────────────────────────┘
+
+BEFORE (Stock History Chart):    AFTER (Stock History Chart):
+┌─────────────────────────┐    ┌─────────────────────────┐
+│ Y-Axis:                 │    │ Y-Axis:                 │
+│ Decile 1 (top)         │    │ Decile 10 (top)        │
+│     ↕                   │    │     ↕                   │
+│ Decile 10 (bottom)     │    │ Decile 1 (bottom)      │
+│                         │    │                         │
+│ (Inverted axis -       │    │ (Natural axis -        │
+│  confusing!)           │    │  intuitive!) ✓         │
+└─────────────────────────┘    └─────────────────────────┘
+
+═══════════════════════════════════════════════════════════════════════
+
+KEY BENEFITS OF CHANGES
+═══════════════════════════════════════════════════════════════════════
+
+✅ MORE INTUITIVE: Higher number = better quality (standard convention)
+✅ EASIER TO READ: Charts show best performers at top naturally
+✅ REGIONAL FLEXIBILITY: Track multiple markets simultaneously
+✅ LONGER TRENDS: 12-month analysis for annual perspectives
+✅ PROFESSIONAL BRANDING: Galileo name throughout
+
+═══════════════════════════════════════════════════════════════════════
+
+MIGRATION NOTES
+═══════════════════════════════════════════════════════════════════════
+
+Your existing data (July 2024 and March 2025) has been:
+
+✓ Automatically converted to new decile system
+✓ Tagged as "US" region
+✓ Verified for accuracy
+✓ Ready to use immediately
+
+No action required on your part - everything is compatible!
+
+═══════════════════════════════════════════════════════════════════════

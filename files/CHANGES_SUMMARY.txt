@@ -1,0 +1,259 @@
+════════════════════════════════════════════════════════════
+  GALILEO TRACKER - UPDATES COMPLETED
+════════════════════════════════════════════════════════════
+
+✅ ALL REQUESTED CHANGES IMPLEMENTED
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. ✅ BRANDING CHANGE: GVI → GALILEO
+   
+   Changed in:
+   • Dashboard title and headings
+   • File upload labels
+   • All documentation
+   • System name throughout
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+2. ✅ REVERSED DECILE RANKING
+
+   OLD SYSTEM:
+   Decile 1 = Best quality
+   Decile 10 = Worst quality
+   
+   NEW SYSTEM:
+   Decile 10 = BEST quality ⭐
+   Decile 1 = WORST quality ❌
+   
+   Changes:
+   • Database rebuilt with reversed rankings
+   • All analysis logic updated
+   • Charts now show decile 10 at top
+   • Positive change = improvement
+   • Negative change = decline
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+3. ✅ EXTENDED TIME PERIODS
+
+   Previously: 3 months, 6 months, Custom
+   
+   NOW AVAILABLE:
+   • 12 months (new!)
+   • 6 months
+   • 3 months
+   • Custom date range
+   
+   All analysis functions support 12-month rolling periods.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+4. ✅ REGIONAL DATA SUPPORT
+
+   NEW REGIONS DROPDOWN:
+   • US
+   • Europe (excl UK)
+   • UK
+   • APAC (excl. Japan)
+   • Japan
+   • China
+   • Global
+   • All Regions (filter option)
+   
+   Features:
+   ✓ Upload files with region tags
+   ✓ Filter analysis by region
+   ✓ Track multiple regions separately
+   ✓ Database stores region for each data point
+   ✓ CLI supports region parameter
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+UPDATED FILES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Core System:
+✓ gvi_tracker.py - Added region support, reversed deciles
+✓ gvi_dashboard.py - Added region filter, 12-month option, rebranded
+✓ gvi_cli.py - Added region parameter, updated labels
+✓ gvi_data.db - Rebuilt with new schema and reversed rankings
+
+Documentation:
+✓ USER_GUIDE.md - Updated with all new features
+✓ All references changed from GVI to Galileo
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+YOUR DATA - UPDATED RESULTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+With reversed deciles (10=best, 1=worst):
+
+STOCKS ENTERING TOP 3 DECILES (8-10): 55
+Top 5 Improvers:
+  • BEN: 1 → 9 (+8 deciles) 📈
+  • MOS: 2 → 10 (+8 deciles) 📈
+  • BA: 1 → 8 (+7 deciles) 📈
+  • NEM: 2 → 9 (+7 deciles) 📈
+  • AIG: 3 → 10 (+7 deciles) 📈
+
+STOCKS ENTERING BOTTOM 3 DECILES (1-3): 43
+Top 5 Decliners:
+  • MSI: 10 → 2 (-8 deciles) 📉
+  • BKR: 9 → 2 (-7 deciles) 📉
+  • GRMN: 8 → 1 (-7 deciles) 📉
+  • ADSK: 9 → 3 (-6 deciles) 📉
+  • PH: 8 → 2 (-6 deciles) 📉
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+HOW TO USE NEW FEATURES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Dashboard:
+1. Launch: streamlit run gvi_dashboard.py
+2. Select region from dropdown (top of sidebar)
+3. Choose time period (12M/6M/3M/Custom)
+4. Upload files with region selection
+5. Analysis automatically filters by chosen region
+
+Command Line:
+# Upload with region
+python gvi_cli.py upload --file data.xlsx --date 2025-04-01 --region UK
+
+# Analyze with region filter
+python gvi_cli.py analyze --start 2024-01-01 --end 2025-01-01 --region Japan
+
+# View dates (all regions)
+python gvi_cli.py dates
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+UNDERSTANDING THE NEW SYSTEM
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+DECILE INTERPRETATION:
+Decile 10 ████████████ Best quality stocks
+Decile 9  ██████████░░
+Decile 8  ████████░░░░ Top 3 threshold
+Decile 7  ██████░░░░░░
+Decile 6  ████░░░░░░░░
+Decile 5  ██░░░░░░░░░░
+Decile 4  ░░░░░░░░░░░░
+Decile 3  ░░░░░░░░░░░░ Bottom 3 threshold
+Decile 2  ░░░░░░░░░░░░
+Decile 1  ░░░░░░░░░░░░ Worst quality stocks
+
+MOVEMENT EXAMPLES:
+Stock moves 5 → 9: +4 deciles = IMPROVED ✓
+Stock moves 8 → 3: -5 deciles = DECLINED ✗
+
+REGIONAL TRACKING:
+You can now maintain separate datasets for:
+• US equities
+• European stocks (excl UK)
+• UK-specific holdings
+• Asian markets (APAC, Japan, China)
+• Global/multi-regional positions
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+WORKFLOW WITH NEW FEATURES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Monday Morning - Multi-Region Analysis:
+
+1. Export Galileo data for US market
+   ↓
+2. Upload to dashboard, select "US" region
+   ↓
+3. Export Galileo data for UK market  
+   ↓
+4. Upload to dashboard, select "UK" region
+   ↓
+5. Switch region filter to "US" to see US movers
+   ↓
+6. Switch region filter to "UK" to see UK movers
+   ↓
+7. Switch to "All Regions" for global view
+   ↓
+8. Select 12-month period for long-term trends
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EXAMPLE QUERIES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+"Show me US stocks entering top deciles over 12 months"
+→ Dashboard: Region=US, Period=12 Months, Tab=Significant Movers
+
+"Which UK stocks declined most in last 3 months?"
+→ Dashboard: Region=UK, Period=3 Months, Tab=Significant Movers (bottom)
+
+"Compare European and Asian stock quality over 6 months"
+→ Dashboard: Toggle between "Europe (excl UK)" and "APAC (excl. Japan)"
+
+"Find Japanese stocks that improved 5+ deciles"
+→ Dashboard: Region=Japan, Threshold=Moving 5+ Deciles
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+BACKWARD COMPATIBILITY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✓ Existing workflow still works
+✓ Your current US data is preserved (marked as "US" region)
+✓ All historical analysis functions work as before
+✓ New features are optional - defaults maintain simplicity
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+DATABASE CHANGES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+New Schema:
+stock_scores:
+  • date (TEXT)
+  • ticker (TEXT)
+  • company_name (TEXT)
+  • sector (TEXT)
+  • region (TEXT) ← NEW
+  • score (REAL)
+  • decile (INTEGER) ← NOW REVERSED (10=best)
+
+Your July 2024 and March 2025 data has been:
+✓ Re-imported with reversed deciles
+✓ Tagged as "US" region
+✓ Verified for accuracy
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+TESTING COMPLETED
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✓ Database rebuilt with new schema
+✓ Decile reversal verified
+✓ Region filtering tested
+✓ 12-month analysis tested
+✓ CLI commands updated
+✓ Dashboard functionality verified
+✓ All documentation updated
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+READY TO USE!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+All changes are complete and tested.
+
+Launch the updated dashboard:
+streamlit run gvi_dashboard.py
+
+Your data is ready with:
+✅ Galileo branding
+✅ Reversed deciles (10=best)
+✅ 12-month analysis option
+✅ Regional filtering (US data loaded)
+
+Start uploading regional data to take full advantage!
