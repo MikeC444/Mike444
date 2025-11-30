@@ -15,7 +15,7 @@ import os
 
 # Page configuration
 st.set_page_config(
-    page_title="Galalio Decile Tracker",
+    page_title="Galileo Decile Tracker",
     page_icon="📊",
     layout="wide"
 )
@@ -28,7 +28,7 @@ def get_tracker():
 tracker = get_tracker()
 
 # Sidebar navigation
-st.sidebar.title("📊 Galalio Tracker")
+st.sidebar.title("📊 Galileo Tracker")
 page = st.sidebar.radio(
     "Navigation",
     ["📈 Dashboard", "📤 Upload Data", "📁 Upload History", "🔍 Stock Lookup", "⚙️ Data Management"]
@@ -49,7 +49,7 @@ REGIONS = [
 # PAGE: Dashboard
 # ============================================
 if page == "📈 Dashboard":
-    st.title("📈 GVI Decile Movement Dashboard")
+    st.title("📈 Galileo Decile Dashboard")
     
     # Get available data
     regions = tracker.get_all_regions()
